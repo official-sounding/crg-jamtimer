@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,13 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentCommandLineParser-netstandard" Version="1.4.3.13" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Websocket.Client" Version="3.2.59" />
+    <None Remove="Handlers\s5xkholh.ekz~" />
+    <None Remove="Sounds\four-whistles.wav" />
+    <None Remove="Sounds\rolling-whistle.wav" />
+    <None Remove="Sounds\single-whistle.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Sounds\" />
+    <EmbeddedResource Include="Sounds\four-whistles.wav" />
+    <EmbeddedResource Include="Sounds\rolling-whistle.wav" />
+    <EmbeddedResource Include="Sounds\single-whistle.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentCommandLineParser-netstandard" Version="1.4.3.13" />
+    <PackageReference Include="NAudio" Version="1.9.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Websocket.Client" Version="3.2.59" />
   </ItemGroup>
 
 </Project>

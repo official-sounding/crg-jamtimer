@@ -17,19 +17,23 @@ namespace crg_jamtimer
 
             if (!result.HasErrors)
             {
-                var argObj = p.Object;
-
                 using var exitEvent = new ManualResetEvent(false);
-                var processor = new CRGMessageProcessor(new[] { new ConsoleHandler() });
+                var argObj = p.Object;
+                IEventHandler[] handlers;
 
-                
+                if(argObj.Silent)
+                {
+                    handlers = new IEventHandler[] { new ConsoleHandler() };
+                } else
+                {
+                    handlers = new IEventHandler[] { new ConsoleHandler(), new AudioHandler() };
+                }
 
+                var processor = new CRGMessageProcessor(handlers);
                 using var client = new WebsocketClient(argObj.WS)
                 {
                     ReconnectTimeoutMs = (int)TimeSpan.FromSeconds(30).TotalMilliseconds
                 };
-
-
 
                 client.ReconnectionHappened.Subscribe(async type => {
                     Console.WriteLine($"Reconnection happened, type: {type}");
