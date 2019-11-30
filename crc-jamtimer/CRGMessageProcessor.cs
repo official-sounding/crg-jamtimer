@@ -1,4 +1,4 @@
-﻿using crc_jamtimer.Handlers;
+﻿using crg_jamtimer.Handlers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Websocket.Client;
 
-namespace crc_jamtimer
+namespace crg_jamtimer
 {
     public class CRGMessageProcessor
     {

@@ -1,11 +1,11 @@
-﻿using crc_jamtimer.Handlers;
+﻿using crg_jamtimer.Handlers;
 using Fclp;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Websocket.Client;
 
-namespace crc_jamtimer
+namespace crg_jamtimer
 {
     class Program
     {

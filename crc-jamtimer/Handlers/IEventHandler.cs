@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace crc_jamtimer.Handlers
+namespace crg_jamtimer.Handlers
 {
     public interface IEventHandler
     {

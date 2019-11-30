@@ -1,4 +1,4 @@
-﻿namespace crc_jamtimer
+﻿namespace crg_jamtimer
 {
     public enum InGameEvent
     {
