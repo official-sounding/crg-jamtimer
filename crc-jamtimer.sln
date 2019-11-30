@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crc-jamtimer", "crc-jamtimer\crc-jamtimer.csproj", "{39448EB1-C702-46BF-8F80-F56F726EB717}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39448EB1-C702-46BF-8F80-F56F726EB717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39448EB1-C702-46BF-8F80-F56F726EB717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39448EB1-C702-46BF-8F80-F56F726EB717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39448EB1-C702-46BF-8F80-F56F726EB717}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2806FF84-B3C3-41CF-AB6C-2BB6E9D435EC}
+	EndGlobalSection
+EndGlobal
