@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using crc_jamtimer.Handlers;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,15 @@ namespace crc_jamtimer
         private bool inJam = false;
         private bool inTimeout = false;
         private bool lineupInverted = true;
+
+        private IEventHandler[] handlers;
+
+        public CRGMessageProcessor(IEventHandler handler) : this(new[] { handler }) { }
+
+        public CRGMessageProcessor(IEventHandler[] handlers)
+        {
+            this.handlers = handlers;
+        }
 
         public async Task Initialize(WebsocketClient client)
         {
@@ -103,23 +113,9 @@ namespace crc_jamtimer
         private void TriggerEvent(InGameEvent ev) {
             if(initialized)
             {
-                switch(ev)
+                foreach(var handler in handlers)
                 {
-                    case InGameEvent.FiveSeconds:
-                        Console.WriteLine("FIVE SECONDS!");
-                        break;
-                    case InGameEvent.JamStarted:
-                        Console.WriteLine("Start Jam");
-                        break;
-                    case InGameEvent.JamEnded:
-                        Console.WriteLine("End Jam");
-                        break;
-                    case InGameEvent.TimeoutDuringLineup:
-                        Console.WriteLine("Timeout");
-                        break;
-                    case InGameEvent.EndOfTimeout:
-                        Console.WriteLine("End of Timeout");
-                        break;
+                    handler.OnEvent(ev);
                 }
             }
         }
@@ -129,16 +125,5 @@ namespace crc_jamtimer
         private static string LINEUP_UP_TIME = "ScoreBoard.Clock(Lineup).Time";
         private static string LINEUP_DOWN_TIME = "ScoreBoard.Clock(Lineup).InvertedTime";
         private static string TIMEOUT_RUNNING = "ScoreBoard.Clock(Timeout).Running";
-    }
-
-
-    public enum InGameEvent
-    {
-        FiveSeconds,
-        JamStarted,
-        JamEnded,
-        TimeoutDuringJam,
-        TimeoutDuringLineup,
-        EndOfTimeout
     }
 }

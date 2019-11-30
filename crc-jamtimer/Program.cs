@@ -1,4 +1,5 @@
-﻿using Fclp;
+﻿using crc_jamtimer.Handlers;
+using Fclp;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace crc_jamtimer
                 var argObj = p.Object;
 
                 using var exitEvent = new ManualResetEvent(false);
-                var processor = new CRGMessageProcessor();
+                var processor = new CRGMessageProcessor(new[] { new ConsoleHandler() });
 
                 
 
@@ -67,6 +68,14 @@ namespace crc_jamtimer
                 .WithDescription("Port the CRG Server is running on")
                 .SetDefault(8000);
 
+            p.Setup(arg => arg.Silent)
+                .As('s', "silent")
+                .WithDescription("Silent-Only Mode");
+
+            p.SetupHelp("?", "help")
+                .Callback(text => Console.WriteLine(text));
+
+
             return p;
         }
     }
@@ -75,6 +84,7 @@ namespace crc_jamtimer
     {
         public string Hostname { get; set; }
         public int Port { get; set; }
+        public bool Silent { get; set; }
 
         public Uri WS => new Uri($"ws://{Hostname}:{Port}/WS");
     }
